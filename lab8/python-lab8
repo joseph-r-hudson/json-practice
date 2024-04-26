@@ -1,0 +1,21 @@
+import json
+
+with open('data/schacon.repos.json', 'r') as file:
+    data = json.load(file)
+
+rows= []
+
+for i in range(5): 
+        name = str(data[i]['name']+",")
+        html = str(data[i]['html_url']+",")
+        update =str(data[i]['updated_at']+',')
+        vis = data[i]['visibility']
+        row =[name,html,update,vis]
+        rows.append(row)
+
+with open("chacon.csv", 'w') as file:
+
+    for row in rows:
+        for x in row:
+            file.write(str(x))
+        file.write('\n')
